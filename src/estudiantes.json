@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nombre": "Maria",
+    "email": "maria@ejemplo.com",
+    "bootcamp": "Backend"
+  },
+  {
+    "id": 2,
+    "nombre": "Juan",
+    "email": "juan@ejemplo.com",
+    "bootcamp": "Frontend"
+  },
+  {
+    "id": 3,
+    "nombre": "Ana",
+    "email": "ana@ejemplo.com",
+    "bootcamp": "Backend"
+  },
+  {
+    "id": 4,
+    "nombre": "Carlos",
+    "email": "carlos@ejemplo.com",
+    "bootcamp": "Full Stack"
+  },
+  {
+    "id": 5,
+    "nombre": "Sofia",
+    "email": "sofia@ejemplo.com",
+    "bootcamp": "Frontend"
+  },
+  {
+    "id": 6,
+    "nombre": "Diego",
+    "email": "diego@ejemplo.com",
+    "bootcamp": "Backend"
+  },
+  {
+    "id": 7,
+    "nombre": "Lucia",
+    "email": "lucia@ejemplo.com",
+    "bootcamp": "Full Stack"
+  },
+  {
+    "id": 8,
+    "nombre": "Mateo",
+    "email": "mateo@ejemplo.com",
+    "bootcamp": "Frontend"
+  },
+  {
+    "id": 9,
+    "nombre": "Elena",
+    "email": "elena@ejemplo.com",
+    "bootcamp": "Backend"
+  },
+  {
+    "id": 10,
+    "nombre": "Andres",
+    "email": "andres@ejemplo.com",
+    "bootcamp": "Full Stack"
+  }
+]
