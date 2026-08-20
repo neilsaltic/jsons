@@ -17,6 +17,25 @@ const router: Router = Router();
 router.get(
   "/",
   function (req: Request<{}, {}, {}, estudiantesFiltrados>, res: Response) {
+    // #swagger.tags = ['Estudiantes']
+    // #swagger.description = 'Obtiene la lista de estudiantes con filtros opcionales'
+
+    /*  #swagger.parameters['email'] = {
+            in: 'query',
+            description: 'Filtrar por email exacto',
+            type: 'string'
+    } */
+    /*  #swagger.parameters['nombre'] = {
+            in: 'query',
+            description: 'Filtrar por nombre exacto',
+            type: 'string'
+    } */
+    /*  #swagger.parameters['bootcamp'] = {
+            in: 'query',
+            description: 'Filtrar por bootcamp',
+            type: 'string'
+    } */
+
     const { nombre, email, bootcamp } = req.query;
     let resultado = [...listaEstudiantes];
 
@@ -46,6 +65,14 @@ router.get(
 
 //obtener por id
 router.get("/:id", function (req: Request<idParam>, res: Response) {
+  // #swagger.tags = ['Estudiantes']
+  // #swagger.description = 'Obtiene la informacion de un estudiante en especifico por su id'
+  /*  #swagger.parameters['id'] = {
+          in: 'path',
+          description: 'ID del estudiante a buscar',
+          required: true,
+          type: 'integer'
+  } */
   const idBuscado = Number(req.params.id); //Number("juan") === 32
 
   if (isNaN(idBuscado)) {
@@ -67,6 +94,20 @@ router.get("/:id", function (req: Request<idParam>, res: Response) {
 router.post(
   "/",
   function (req: Request<{}, {}, crearEstudiante>, res: Response) {
+    /*
+      #swagger.tags = ['Estudiantes']
+      #swagger.summary = 'crear un estudiante nuevo'
+      #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Datos para crear un estudiante nuevo',
+        required: true,
+        schema: {
+          $nombre: "Juan Perez",
+          $email: "example@example.com",
+          $bootcamp: "Full Stack",
+        }
+      }
+    */
     const { nombre, email, bootcamp } = req.body;
     if (!nombre || !email || !bootcamp) {
       return res.status(400).json({ error: "faltan datos q son obligatorios" });
@@ -85,6 +126,26 @@ router.post(
 //actualizar un Registro
 
 router.put("/:id", function (req: Request, res: Response) {
+  /*
+    #swagger.tags = ['Estudiantes']
+    #swagger.summary = 'actualizar un estudiante existente'
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID del estudiante a actualizar',
+      required: true,
+      type: 'integer'
+    }
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Datos a actualizar del estudiante',
+      required: true,
+      schema: {
+        nombre: "Juan Perez",
+        email: "example@example.com",
+        bootcamp: "Frontend",
+      }
+    }
+  */
   const idBuscado = Number(req.params.id);
   const index = listaEstudiantes.findIndex(function (e) {
     return e.id === idBuscado;
@@ -106,6 +167,16 @@ router.put("/:id", function (req: Request, res: Response) {
 
 // Eliminacion de un registro
 router.delete("/:id", function (req: Request, res: Response) {
+  /*
+    #swagger.tags = ['Estudiantes']
+    #swagger.summary = 'eliminar un estudiante'
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID del estudiante a eliminar',
+      required: true,
+      type: 'integer'
+    }
+  */
   const idBuscado = Number(req.params.id);
   const index = listaEstudiantes.findIndex(function (e) {
     return e.id === idBuscado;

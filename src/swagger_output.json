@@ -23,7 +23,30 @@
     },
     "/api/estudiantes/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Estudiantes"
+        ],
+        "description": "Obtiene la lista de estudiantes con filtros opcionales",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Filtrar por email exacto",
+            "type": "string"
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "description": "Filtrar por nombre exacto",
+            "type": "string"
+          },
+          {
+            "name": "bootcamp",
+            "in": "query",
+            "description": "Filtrar por bootcamp",
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -31,24 +54,38 @@
         }
       },
       "post": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "crear un estudiante nuevo",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Datos para crear un estudiante nuevo",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "nombre": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Juan Perez"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "example@example.com"
                 },
                 "bootcamp": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Full Stack"
                 }
-              }
+              },
+              "required": [
+                "nombre",
+                "email",
+                "bootcamp"
+              ]
             }
           }
         ],
@@ -61,13 +98,17 @@
     },
     "/api/estudiantes/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Estudiantes"
+        ],
+        "description": "Obtiene la informacion de un estudiante en especifico por su id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID del estudiante a buscar"
           }
         ],
         "responses": {
@@ -77,13 +118,41 @@
         }
       },
       "put": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "actualizar un estudiante existente",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID del estudiante a actualizar"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos a actualizar del estudiante",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string",
+                  "example": "Juan Perez"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "example@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -96,13 +165,18 @@
         }
       },
       "delete": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "eliminar un estudiante",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID del estudiante a eliminar"
           }
         ],
         "responses": {
