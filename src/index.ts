@@ -5,11 +5,16 @@ import { cargarDatos } from "./data/estudiante.data.js";
 import swaggerUi from "swagger-ui-express";
 import fs from "node:fs";
 import path from "node:path";
+import dotenv from "dotenv";
+import cors from "cors";
+
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cors());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   const timestamp = new Date().toLocaleTimeString();
@@ -25,7 +30,7 @@ if (fs.existsSync(swaggerFilePath)) {
   console.log("archivo swagger-output.json no encontrado");
 }
 
-app.use("/api/estudiantes", estudiantesRouter);
+app.use("/api/students", estudiantesRouter);
 
 app.listen(PORT, async () => {
   await cargarDatos();

@@ -36,7 +36,7 @@ router.get(
             type: 'string'
     } */
 
-    const { nombre, email, bootcamp } = req.query;
+    const { name, email, bootcamp } = req.query;
     let resultado = [...listaEstudiantes];
 
     //FILTRO por el email mayusculas y minusculas irrelevantes
@@ -46,9 +46,9 @@ router.get(
       );
     }
     //filtro POR EL NOMBRE indiferente a si esta minusculas o mayusculas
-    if (nombre) {
+    if (name) {
       resultado = resultado.filter(
-        (e) => e.nombre.toLowerCase() === nombre.toLowerCase(),
+        (e) => e.name.toLowerCase() === name.toLowerCase(),
       );
     }
     //filtro para el estado activo de mi estudiante
@@ -108,13 +108,13 @@ router.post(
         }
       }
     */
-    const { nombre, email, bootcamp } = req.body;
-    if (!nombre || !email || !bootcamp) {
+    const { name, email, bootcamp } = req.body;
+    if (!name || !email || !bootcamp) {
       return res.status(400).json({ error: "faltan datos q son obligatorios" });
     }
     const nuevoEstudiante: Estudiante = {
       id: listaEstudiantes.length > 0 ? listaEstudiantes.length + 1 : 1,
-      nombre,
+      name,
       email,
       bootcamp,
     };
@@ -153,11 +153,11 @@ router.put("/:id", function (req: Request, res: Response) {
   if (index === -1) {
     return res.status(404).json({ error: "estudiante no encontrado >:c" });
   } else {
-    const { nombre, email, bootcamp }: actualizarEstudiante = req.body;
+    const { name, email, bootcamp }: actualizarEstudiante = req.body;
     // actualizando la informacion del usuario
     listaEstudiantes[index] = {
       id: idBuscado,
-      nombre: nombre ?? listaEstudiantes[index]?.nombre,
+      name: name ?? listaEstudiantes[index]?.name,
       email: email ?? listaEstudiantes[index]?.email,
       bootcamp: bootcamp ?? listaEstudiantes[index]?.bootcamp,
     };

@@ -5,10 +5,10 @@
     "description": "Documentación de la API REST del MP-S2",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "7cdt3852-3000.brs.devtunnels.ms",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/api/estudiantes/": {
+    "/api/students/": {
       "get": {
         "tags": [
           "Estudiantes"
@@ -96,7 +96,7 @@
         }
       }
     },
-    "/api/estudiantes/{id}": {
+    "/api/students/{id}": {
       "get": {
         "tags": [
           "Estudiantes"
@@ -186,5 +186,6 @@
         }
       }
     }
-  }
+  },
+  "basepath": "/"
 }
